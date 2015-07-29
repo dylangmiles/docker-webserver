@@ -1,0 +1,10 @@
+proxy:
+  extends:
+    file: docker-common.yml
+    service: proxy
+  hostname: homestead
+logspout:
+  extends:
+    file: docker-common.yml
+    service: logspout
+  hostname: homestead

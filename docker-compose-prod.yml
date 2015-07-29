@@ -1,0 +1,10 @@
+proxy:
+  extends:
+    file: docker-common.yml
+    service: proxy
+  hostname: ${HOSTNAME}
+logspout:
+  extends:
+    file: docker-common.yml
+    service: logspout
+  hostname: ${HOSTNAME}

@@ -1,0 +1,17 @@
+#Production containers
+#=====================
+proxy:
+  image: dylangmiles/nginx-proxy
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+  ports:
+    - 80:80
+  privileged: true
+  restart: always
+logspout:
+  image: gliderlabs/logspout
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+  command: syslog://logs2.papertrailapp.com:22091
+  privileged: true
+  restart: always
