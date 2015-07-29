@@ -28,7 +28,7 @@ Production Server Setup
    https://docs.docker.com/compose/install/
 
 3. Clone the Docker Web Server
-  `git clone https://github.com/dylangmiles/docker-webserver.git`
+  `git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver`
 
 Start the services
 ------------------
