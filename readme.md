@@ -29,6 +29,8 @@ Production Server Setup
 
 3. Clone the Docker Web Server
   `git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver`
+4. Replace vars in your docker compose file
+  `/docker-compose-replacevars.sh docker-compose-prod.yml docker-compose.yml HOSTNAME=servername`
 
 Start the services
 ------------------
