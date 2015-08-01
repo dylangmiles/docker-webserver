@@ -28,14 +28,22 @@ Production Server Setup
    https://docs.docker.com/compose/install/
 
 3. Clone the Docker Web Server
-  `git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver`
+   ```
+   git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver
+   ```
 4. Replace vars in your docker compose file
-  `/docker-compose-replacevars.sh docker-compose-prod.yml docker-compose.yml HOSTNAME=servername`
+   ```
+  ./docker-compose-replacevars.sh docker-compose-prod.yml docker-compose.yml HOSTNAME=servername
+  ```
 
 Start the services
 ------------------
-`docker-compose up -d proxy`
+```
+docker-compose up -d proxy
+```
 
-`docker-compose up -d logspout`
+```
+docker-compose up -d logspout
+```
 
 Once you start your other services you should be able to browse to them with with their domain name on port 80!
