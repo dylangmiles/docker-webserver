@@ -1,9 +1,10 @@
 #Production containers
 #=====================
 proxy:
-  image: dylangmiles/nginx-proxy
+  image: jwilder/nginx-proxy
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
+    - ./my_proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro
   ports:
     - 80:80
   privileged: true
