@@ -3,6 +3,13 @@ proxy:
     file: docker-common.yml
     service: proxy
   hostname: homestead
+server:
+  extends:
+    file: docker-common.yml
+    service: server
+  hostname: homestead
+  volumes_from: 
+   - proxy
 logspout:
   extends:
     file: docker-common.yml

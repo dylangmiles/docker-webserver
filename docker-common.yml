@@ -1,18 +1,27 @@
 #Production containers
 #=====================
 proxy:
-  image: dylangmiles/docker-nginx-proxy
+  image: jwilder/nginx-proxy
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
     - ./my_proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+    - ./data/certs:/etc/nginx/certs:ro
+    - /etc/nginx/vhost.d
+    - /usr/share/nginx/html
   ports:
     - 80:80
-  privileged: true
+    - 443:443
   restart: always
+server:
+  image: jrcs/letsencrypt-nginx-proxy-companion
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock:ro
+   - "./data/certs:/etc/nginx/certs:rw"
+  restart: always
+  privileged: true
 logspout:
   image: gliderlabs/logspout
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock
   command: syslog://logs2.papertrailapp.com:22091
-  privileged: true
   restart: always
