@@ -39,7 +39,7 @@ Production Server Setup
 Start the services
 ------------------
 ```
-docker-compose up -d proxy
+docker-compose up -d server
 ```
 
 ```
