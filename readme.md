@@ -22,7 +22,7 @@ Once Kitematic is installed then 'Install Docker Commands' from the Kitematic me
 Production Server Setup
 -----------------------
 1. Install Docker
-   https://docs.docker.com/installation/
+   https://docs.docker.com/engine/installation/
 
 2. Install Docker Compose:
    https://docs.docker.com/compose/install/
@@ -31,9 +31,9 @@ Production Server Setup
    ```
    git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver
    ```
-4. Replace vars in your docker compose file
+4. Add the following environment variable to your .profile
    ```
-   ./docker-compose-replacevars.sh docker-compose-prod.yml docker-compose.yml HOSTNAME=servername
+   export HOSTNAME=<yourhostname>
    ```
 
 Start the services

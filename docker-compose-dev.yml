@@ -2,16 +2,16 @@ proxy:
   extends:
     file: docker-common.yml
     service: proxy
-  hostname: development-${LOGNAME}
+  hostname: ${HOSTNAME}
 server:
   extends:
     file: docker-common.yml
     service: server
-  hostname: development-${LOGNAME}
+  hostname: ${HOSTNAME}
   volumes_from: 
    - proxy
 logspout:
   extends:
     file: docker-common.yml
     service: logspout
-  hostname: development-${LOGNAME}
+  hostname: ${HOSTNAME}
