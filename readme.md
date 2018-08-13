@@ -28,9 +28,9 @@ Development machine setup
    ```
    export HOSTNAME=<yourhostname>
    ```
-5. Run ./create-local-crt.sh to generate .local and localhost self signed certificates.   
+5. Run `./create-local-crt.sh` to generate .local and localhost self signed certificates into `data/certs`.   
     
-
+6. Add `data/certs/local.crt` and `data/certs/localhost.crt` to your locally trusted certificate store
 
 
 Production Server Setup
