@@ -14,9 +14,23 @@ This container forwards all log output on stdout and stderr to papertrail.
 Development machine setup
 -------------------------
 
-For development on OSX and Windows I recommend you install Kinematic: https://kitematic.com/
+1. Install Docker
+   https://docs.docker.com/engine/installation/
 
-Once Kitematic is installed then 'Install Docker Commands' from the Kitematic menu. This installs the docker command line utilities.
+2. Install Docker Compose:
+   https://docs.docker.com/compose/install/
+
+3. Clone the Docker Web Server
+   ```
+   git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver
+   ```
+4. Add the following environment variable to your .profile
+   ```
+   export HOSTNAME=<yourhostname>
+   ```
+5. Run ./create-local-crt.sh to generate .local and localhost self signed certificates.   
+    
+
 
 
 Production Server Setup
