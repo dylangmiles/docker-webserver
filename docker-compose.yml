@@ -3,15 +3,12 @@ proxy:
     file: docker-common.yml
     service: proxy
   hostname: ${HOSTNAME}
+  restart: always
 server:
   extends:
     file: docker-common.yml
     service: server
   hostname: ${HOSTNAME}
   volumes_from: 
-   - proxy  
-logspout:
-  extends:
-    file: docker-common.yml
-    service: logspout
-  hostname: ${HOSTNAME}
+   - proxy
+  restart: always

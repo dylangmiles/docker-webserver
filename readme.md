@@ -24,9 +24,10 @@ Development machine setup
    ```
    git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver
    ```
-4. Add the following environment variable to your .profile
+4. Create a .env file in the application directory with the following values
    ```
-   export HOSTNAME=<yourhostname>
+   HOSTNAME=<yourhostname>
+   COMPOSE_FILE=docker-compose-dev.yml
    ```
 5. Run `./create-local-crt.sh` to generate .local and localhost self signed certificates into `data/certs`.   
     
@@ -45,7 +46,7 @@ Production Server Setup
    ```
    git clone https://github.com/dylangmiles/docker-webserver.git docker-webserver
    ```
-4. Add the following environment variable to your .profile
+4. Create a .env file in the application directory with the following values:
    ```
    export HOSTNAME=<yourhostname>
    ```
@@ -54,10 +55,6 @@ Start the services
 ------------------
 ```
 docker-compose up -d server
-```
-
-```
-docker-compose up -d logspout
 ```
 
 Once you start your other services you should be able to browse to them with with their domain name on port 80!

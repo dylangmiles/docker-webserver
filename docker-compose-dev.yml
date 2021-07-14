@@ -10,8 +10,4 @@ server:
   hostname: ${HOSTNAME}
   volumes_from: 
    - proxy
-logspout:
-  extends:
-    file: docker-common.yml
-    service: logspout
-  hostname: ${HOSTNAME}
+
