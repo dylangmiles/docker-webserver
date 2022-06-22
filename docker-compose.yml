@@ -1,14 +1,29 @@
-proxy:
-  extends:
-    file: docker-common.yml
-    service: proxy
-  hostname: ${HOSTNAME}
-  restart: always
-server:
-  extends:
-    file: docker-common.yml
-    service: server
-  hostname: ${HOSTNAME}
-  volumes_from: 
-   - proxy
-  restart: always
+version: '3.4'
+services:
+  proxy:
+    image: jwilder/nginx-proxy:0.6.0
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./my_proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro
+      - ./data/certs:/etc/nginx/certs:ro
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+    ports:
+      - 80:80
+      - 443:443
+    hostname: ${HOSTNAME}
+    restart: always
+  server:
+    image: jrcs/letsencrypt-nginx-proxy-companion:v1.12.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - "./data/certs:/etc/nginx/certs:rw"
+    privileged: true
+    hostname: ${HOSTNAME}
+    volumes_from:
+      - proxy
+    restart: always
+
+networks:
+  default:
+    name: internet
