@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   proxy:
-    image: jwilder/nginx-proxy:0.6.0
+    image: jwilder/nginx-proxy:1.0
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./my_proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro
@@ -12,12 +12,14 @@ services:
       - 80:80
       - 443:443
     hostname: ${HOSTNAME}
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
     restart: always
   server:
-    image: jrcs/letsencrypt-nginx-proxy-companion:v1.12.1
+    image: nginxproxy/acme-companion:2.2
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - "./data/certs:/etc/nginx/certs:rw"
+      - ./data/certs:/etc/nginx/certs:rw
     privileged: true
     hostname: ${HOSTNAME}
     volumes_from:
